@@ -1,0 +1,5 @@
+* dynamic sql query in python
+* python read excel into df
+* pickl each df returned from sql query
+* add excel to git
+* 
