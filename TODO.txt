@@ -1,5 +1,5 @@
-* dynamic sql query in python
-* python read excel into df
-* pickl each df returned from sql query
+* dynamic sql query in python DONE
+* python read excel into df DONE
+* pickl each df returned from sql query DONE
 * add excel to git
-* 
+* plot all dfs at once [lunch break]
