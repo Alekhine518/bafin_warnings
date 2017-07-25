@@ -40,21 +40,36 @@ def get_price_ts_basic(isin, dt_start, dt_end):
           price.MarketDate,
           price.Close_,
           price.ISOCurrCode,
-  rn df Volume,ce.ExchIntCode        price.VWAP,ce.ExchIntCode        price.VWAP,ce.ExchIntCode        price.VWAP,ce.ExchIntCode        price.VWAP,ce.ExchIntCode        price.VWAP,ce.ExchIntCode        price.VWAP,ce.ExchIntCode        price.VWAP,ce.ExchIntCode        price.VWAP,ce.ExchIntCode        price.VWAP,ce.ExchIntCode        price.VWAP,ce.ExchIntCode        price.VWAP,
+  rn df Volume,ce.ExchIntCode        
+          price.VWAP,
+          ce.ExchIntCode,
+          price.VWAP,
+          ce.ExchIntCode
+             price.VWAP,ce.ExchIntCode
 
 
   '''    
   sql = sql.format(isin, s_start, s_end)
+  con = jss.sql_cnxn('qad')
+  df = pd.read_sql(sql, con, parse_dates=['MarketDate'])
   return df
 
-def get_prices_ts_window(isin, dt_event, ante, post):  dt_start = dt_event - timedelta(weeks=ante)  dt_end = dt_event + timedelta(weeks=post)  df = get_price_ts_basic(isin, dt_start, dt_end)                         price. con = jss.sql_cnxn('qad')  df = pd.read_sql(sql, con, parse_dates=['MarketDate'])  retu
+                              
+def get_prices_ts_window(isin, dt_event, ante, post):
+  dt_start = dt_event - timedelta(weeks=ante)
+  dt_end = dt_event + timedelta(weeks=post)
+  df = get_price_ts_basic(isin, dt_start, dt_end)
+  return df
 
 
 def main():
   # Load dataframe with cases.
   file_path = r'W:\A\AMS\Team\WISE\99_dev\bafin_warnings\bafin_warnings.xlsx'
   df = pd.read_excel(file_path, header=0)
-  # For each case query ds2 prices.events = dict()    events[isin] = ts_event    events[isin] = ts_event    events[isin] = ts_event    events[isin] = ts_event    events[isin] = ts_event    events[isin] = ts_event
-                              
-                              # Pickle resulting dictionary of isins and dataframes.  main()  main()  main()
+  # For each case query ds2 prices.
+  for index, row in df.iterrows():
+    isin =row['isin']
+  events = dict()
+  events[isin] = ts_event                       
+  # Pickle resulting dictionary of isins and dataframes.  main()  main()  main()
 
